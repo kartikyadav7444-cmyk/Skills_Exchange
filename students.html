@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Students – SkillExchange | Student Skill Exchange Platform</title>
+  <meta name="description" content="Discover fellow college students by skill, branch, or academic year. Find study partners and mentors.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. LOGGED-IN NAVIGATION HEADER
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo" aria-label="SkillExchange Dashboard">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+          </svg>
+        </div>
+        <span>Skill<span class="brand-highlight">Exchange</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="students.html" class="nav-link active">Find Students</a></li>
+        <li><a href="requests.html" class="nav-link">Requests</a></li>
+        <li><a href="connections.html" class="nav-link">Connections</a></li>
+        <li><a href="profile.html" class="nav-link">My Profile</a></li>
+      </ul>
+
+      <!-- User Actions -->
+      <div class="nav-actions">
+        <button id="logoutBtn" class="btn btn-outline-primary btn-sm">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       2. FIND STUDENTS DIRECTORY
+       ====================================================================== -->
+  <main class="container dashboard-layout">
+    <!-- Page Header -->
+    <div class="find-header-section">
+      <span class="section-badge">Student Directory</span>
+      <h1 class="section-title" style="font-size: 2.1rem; margin-bottom: 0.5rem;">
+        Discover Mentors & Study Partners
+      </h1>
+      <p class="section-subtitle" style="font-size: 1rem;">
+        Connect with FY, SY, and TY college peers to exchange practical skills or learn a new subject freely.
+      </p>
+    </div>
+
+    <!-- Search & Filter Controls Card -->
+    <section class="search-filter-card">
+      <!-- Search Input Bar -->
+      <div class="search-bar-row">
+        <div class="search-input-group">
+          <span class="search-icon" style="display:flex; align-items:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input 
+            type="text" 
+            id="studentSearchInput" 
+            class="form-control" 
+            placeholder="Search by student name, branch, or skill (e.g. Python, Excel, Rahul, CSE)..."
+            aria-label="Search students by name or skill"
+          >
+        </div>
+      </div>
+
+      <!-- Filters Row -->
+      <div class="filter-controls-row">
+        <!-- Academic Year Filter -->
+        <div class="filter-item">
+          <label for="filterYearSelect">Year:</label>
+          <select id="filterYearSelect" class="form-control">
+            <option value="all">All Years (FY/SY/TY)</option>
+            <option value="FY">First Year (FY)</option>
+            <option value="SY">Second Year (SY)</option>
+            <option value="TY">Third Year (TY)</option>
+          </select>
+        </div>
+
+        <!-- Learning Mode Filter -->
+        <div class="filter-item">
+          <label for="filterModeSelect">Mode:</label>
+          <select id="filterModeSelect" class="form-control">
+            <option value="all">All Modes</option>
+            <option value="Online">Online Sessions</option>
+            <option value="Offline">Offline (Campus)</option>
+            <option value="Both">Both Modes</option>
+          </select>
+        </div>
+
+        <!-- Specific Skill Filter -->
+        <div class="filter-item">
+          <label for="filterSkillSelect">Skill Offered:</label>
+          <select id="filterSkillSelect" class="form-control">
+            <option value="all">All Skills</option>
+            <!-- Injected dynamically via students.js -->
+          </select>
+        </div>
+
+        <!-- Reset Filters Button -->
+        <button type="button" id="resetFiltersBtn" class="btn btn-outline btn-sm" style="margin-left: auto;">
+          <span>Reset Filters</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Results Meta Bar -->
+    <div class="results-meta-bar">
+      <div id="resultsCounter" style="font-weight: 700; color: var(--slate-800);">
+        Loading students...
+      </div>
+      <div style="font-size: 0.82rem; color: var(--slate-500); display: flex; align-items: center; gap: 0.4rem;">
+        <span style="color: var(--accent);">●</span>
+        <span>Mutual exchange matches are pinned to the top</span>
+      </div>
+    </div>
+
+    <!-- Student Cards Grid -->
+    <section id="studentsGridContainer" class="students-grid">
+      <!-- Injected dynamically via students.js -->
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/students.js"></script>
+</body>
+</html>

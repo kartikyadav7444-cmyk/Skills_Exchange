@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillExchange – Student Skill Exchange Platform | Learn & Share</title>
+  <meta name="description" content="A student-to-student skill sharing platform for college peers across FY, SY, and TY to learn from each other online or on campus.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. NAVIGATION HEADER
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="SkillExchange Homepage">
+        <div class="brand-icon">
+          <!-- Graduation Cap Icon (SVG) -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+          </svg>
+        </div>
+        <span>Skill<span class="brand-highlight">Exchange</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#benefits" class="nav-link">Benefits</a></li>
+        <li><a href="#learning-modes" class="nav-link">Campus & Online</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+
+      <!-- Navbar Actions (Auth) -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="register.html" class="btn btn-primary btn-sm mobile-show">Get Started</a>
+        <!-- Mobile Menu Toggle Button -->
+        <button class="nav-toggle-btn" id="navToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- ======================================================================
+         2. HERO SECTION & INTERACTIVE CONCEPT DEMO
+         ====================================================================== -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <!-- Hero Text Column -->
+        <div class="hero-text-content">
+          
+
+          <h1 class="hero-title">
+            Learn From Students. <br>
+            <span class="hero-title-accent">Share Your Skills.</span>
+          </h1>
+
+          <p class="hero-description">
+            Discover fellow college peers across First Year (FY), Second Year (SY), and Third Year (TY) 
+            to exchange technical, creative, and academic skills. Get immediate doubt clarification 
+            free of cost—both online and on campus.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="register.html" class="btn btn-primary btn-lg">
+              <span>Get Started Free</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M5 13H16.865L13.435 16.435L14.85 17.85L20.7 12L14.85 6.15L13.435 7.565L16.865 11H5V13Z"/>
+              </svg>
+            </a>
+            <a href="#how-it-works" class="btn btn-outline btn-lg">Explore Platform</a>
+          </div>
+
+          <!-- Quick Trust Highlights -->
+          <div class="hero-highlights">
+            <div class="hero-highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#10b981">
+                
+              </svg>
+              
+            </div>
+            <div class="hero-highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#10b981">
+               
+              </svg>
+             
+            </div>
+            <div class="hero-highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#10b981">
+                
+              </svg>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual: Visual Example of Skill Matching Network -->
+        <div class="hero-visual-container">
+          <div class="visual-preview-card">
+            <div class="preview-header">
+              <span class="preview-tag">Recently Joined</span>
+              <button class="btn btn-outline btn-sm" id="demoSwitchBtn" title="Click to view another student match example">
+                <span>More</span>
+              </button>
+            </div>
+
+            <div class="connection-demo-flow">
+              <!-- Student A Card -->
+              <div class="demo-student-box">
+                <div class="demo-student-header">
+                  <div class="demo-avatar blue">RP</div>
+                  <div class="demo-student-info">
+                    <h4 id="demoStudentAName">Rahul Patil</h4>
+                    <p><span class="badge-year" id="demoStudentAYear">SY CSE</span> • Preferred: Both</p>
+                  </div>
+                </div>
+                <div class="demo-skills-row">
+                  <div class="demo-skill-group">
+                    <span class="demo-skill-label">Skills:</span>
+                    <span class="skill-tag teach" id="demoStudentATeach">Python</span>
+                    <span class="skill-tag teach">C++</span>
+                  </div>
+                  
+                </div>
+              </div>
+
+             
+              
+
+              <!-- Student B Card -->
+              <div class="demo-student-box">
+                <div class="demo-student-header">
+                  <div class="demo-avatar purple">PS</div>
+                  <div class="demo-student-info">
+                    <h4 id="demoStudentBName">Priya Sharma</h4>
+                    <p><span class="badge-year" id="demoStudentBYear">TY IT</span> • Preferred: Online</p>
+                  </div>
+                </div>
+                <div class="demo-skills-row">
+                  <div class="demo-skill-group">
+                    <span class="demo-skill-label">Skills:</span>
+                    <span class="skill-tag teach" id="demoStudentBTeach">Graphic Design</span>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. PLATFORM STATISTICS BAR
+         ====================================================================== -->
+    <section class="stats-bar">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Diverse Student Profiles</div>
+          <div class="stat-subtext">Across multiple engineering & science branches</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">25+</div>
+          <div class="stat-label">Practical Skills Listed</div>
+          <div class="stat-subtext">Coding, Design, Data, Speaking & Tools</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Academic Years Active</div>
+          <div class="stat-subtext">First Year, Second Year, Third Year</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">₹0</div>
+          <div class="stat-label">Completely Free Learning</div>
+          <div class="stat-subtext">Pure peer-to-peer knowledge sharing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. HOW IT WORKS SECTION
+         ====================================================================== -->
+    <section class="section section-alt" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+         
+          <h2 class="section-title">How SkillExchange Works</h2>
+          <p class="section-subtitle">
+            A frictionless learning flow designed for college students to share knowledge without administrative hurdles.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Create Your Profile</h3>
+            <p class="step-description">
+              Sign up with your college year and branch. Select the skills you are confident to teach, 
+              and the skills you are eager to learn.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Discover Peers</h3>
+            <p class="step-description">
+              Browse student cards or search by specific skill. Filter by learning mode 
+              (Online, Offline, or Both) to find matching classmates.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Send Learning Request</h3>
+            <p class="step-description">
+              Request a learning session with one click. There is no strict barter—you can learn from someone 
+              even if you aren't teaching them back.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Learn & Leave a Review</h3>
+            <p class="step-description">
+              Meet online or on campus. After your doubt-clearing session, provide a friendly 1–5 star rating 
+              and review to appreciate their help.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. POPULAR SKILLS ON CAMPUS
+         ====================================================================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          
+          <h2 class="section-title">Popular Skills On Campus</h2>
+          <p class="section-subtitle">
+            Browse commonly exchanged skills across departments, from technical languages to creative tools.
+          </p>
+        </div>
+
+        <!-- Category Filter Tabs (Handled via Vanilla JS) -->
+        <div class="skills-filter-nav">
+          <button class="filter-btn active" data-category="all">All Skills</button>
+          <button class="filter-btn" data-category="coding">Coding & Tech</button>
+          <button class="filter-btn" data-category="design">Design & Media</button>
+          <button class="filter-btn" data-category="tools">Productivity & Tools</button>
+          <button class="filter-btn" data-category="soft-skills">Soft Skills</button>
+        </div>
+
+        <!-- Skills Cards Grid -->
+        <div class="skills-grid">
+          <!-- Python -->
+          <div class="skill-card" data-category="coding">
+            
+            <div class="skill-card-content">
+              <h4>Python Programming</h4>
+              <p>Basics, logic building, data analysis, automation scripts, and college lab assignments.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">7 Mentors</span>
+                <span>• FY/SY/TY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- C++ -->
+          <div class="skill-card" data-category="coding">
+            
+            <div class="skill-card-content">
+              <h4>C & C++ Programming</h4>
+              <p>Object-oriented concepts, pointers, memory allocation, and DSA fundamentals.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">5 Mentors</span>
+                <span>• SY/TY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="skill-card" data-category="coding">
+            
+            <div class="skill-card-content">
+              <h4>HTML, CSS & JavaScript</h4>
+              <p>Responsive design, DOM manipulation, frontend mini-projects, and web assignments.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">8 Mentors</span>
+                <span>• FY/SY/TY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graphic Design -->
+          <div class="skill-card" data-category="design">
+            
+            <div class="skill-card-content">
+              <h4>Graphic Design & Canva</h4>
+              <p>College event posters, presentation slides, social media graphics, and color theory.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">4 Mentors</span>
+                <span>• All Branches</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Editing -->
+          <div class="skill-card" data-category="design">
+           
+            <div class="skill-card-content">
+              <h4>Video Editing & Reels</h4>
+              <p>Premiere Pro, CapCut, audio syncing, pacing, and college club promo videos.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">3 Mentors</span>
+                <span>• Creative Club</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MS Excel -->
+          <div class="skill-card" data-category="tools">
+            
+            <div class="skill-card-content">
+              <h4>Microsoft Excel & Sheets</h4>
+              <p>Formulas, VLOOKUP, pivot tables, charts, data cleaning, and practical calculations.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">6 Mentors</span>
+                <span>• High Demand</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SQL & Databases -->
+          <div class="skill-card" data-category="tools">
+           
+            <div class="skill-card-content">
+              <h4>SQL & Relational DBs</h4>
+              <p>Writing queries, joins, table normalization, and DBMS laboratory coursework.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">4 Mentors</span>
+                <span>• SY/TY CSE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Public Speaking -->
+          <div class="skill-card" data-category="soft-skills">
+           
+            <div class="skill-card-content">
+              <h4>Public Speaking & PPTs</h4>
+              <p>Overcoming seminar stage fright, structuring presentations, and viva confidence.</p>
+              <div class="skill-card-meta">
+                <span class="skill-tag teach">5 Mentors</span>
+                <span>• Cross-Year</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. WHY STUDENT SKILL EXCHANGE? (BENEFITS)
+         ====================================================================== -->
+    <section class="section section-alt" id="benefits">
+      <div class="container">
+        <div class="section-header">
+          
+          <h2 class="section-title">Why Student Skill Exchange?</h2>
+          <p class="section-subtitle">
+            Traditional learning often isolates students. Here is how peer-to-peer exchange transforms campus life.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <!-- Benefit 1 -->
+          <div class="benefit-card">
+            
+            <h3 class="benefit-title">Cross-Year Connections</h3>
+            <p class="benefit-desc">
+              Break the departmental and year silos. First-year students can comfortably seek guidance 
+              from experienced seniors without hesitation or intimidation.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="benefit-card">
+            
+            <h3 class="benefit-title">Immediate Doubt Clarification</h3>
+            <p class="benefit-desc">
+              No need to wait for weekly faculty office hours. Classmates explain concepts in relatable, 
+              plain language with student-level examples.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="benefit-card">
+           
+            <h3 class="benefit-title">Flexible Exchange Network</h3>
+            <p class="benefit-desc">
+              Unlike a rigid barter system, Student A can teach Student B without Student B having to teach Student A in return. 
+              Teach what you love, learn what you need.
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="benefit-card">
+            
+            <h3 class="benefit-title">100% Free & Accessible</h3>
+            <p class="benefit-desc">
+              College students shouldn't have to pay high fees for basic software or programming tips. 
+              Campus knowledge stays within campus, freely accessible to all.
+            </p>
+          </div>
+
+          <!-- Benefit 5 -->
+          <div class="benefit-card">
+            
+            <h3 class="benefit-title">Reinforce Your Own Skills</h3>
+            <p class="benefit-desc">
+              Teaching someone else is the most effective way to master a subject. Seniors polish their fundamentals 
+              while preparing junior peers.
+            </p>
+          </div>
+
+          <!-- Benefit 6 -->
+          <div class="benefit-card">
+            
+            <h3 class="benefit-title">Verified Student Ratings</h3>
+            <p class="benefit-desc">
+              Transparent, genuine peer ratings and reviews build mutual trust and highlight the most helpful mentors 
+              in your campus community.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         7. ONLINE + OFFLINE LEARNING (CAMPUS INTEGRATION)
+         ====================================================================== -->
+    <section class="section" id="learning-modes">
+      <div class="container">
+        <div class="section-header">
+         
+          <h2 class="section-title">Online & On-Campus Learning</h2>
+          <p class="section-subtitle">
+            Students can choose whatever learning mode fits their timetable and comfort level.
+          </p>
+        </div>
+
+        <div class="learning-modes-grid">
+          <!-- Online Mode Card -->
+          <div class="mode-card">
+            <div class="mode-card-header">
+             
+              <div>
+                
+                <h3 class="mode-card-title">Online Sessions</h3>
+              </div>
+            </div>
+            <p class="mode-description">
+              Perfect for hostel rooms, weekend coding sessions, or late-evening exam preparation.
+            </p>
+            <ul class="mode-features-list">
+              <li class="mode-feature-item">
+                <span class="mode-feature-check">-</span>
+                <span>Screen sharing for live debugging & code walkthroughs</span>
+              </li>
+              <li class="mode-feature-item">
+                <span class="mode-feature-check">-</span>
+                <span>Exchange notes, code snippets, and presentation slides</span>
+              </li>
+              <li class="mode-feature-item">
+                <span class="mode-feature-check">-</span>
+                <span>Connect via Google Meet, Zoom, or Discord anytime</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Offline Mode Card -->
+          <div class="mode-card">
+            <div class="mode-card-header">
+             
+              <div>
+                
+                <h3 class="mode-card-title">Offline Campus Meetings</h3>
+              </div>
+            </div>
+            <p class="mode-description">
+              Encourages real human interaction, hands-on lab collaboration, and strong campus friendships.
+            </p>
+            <ul class="mode-features-list">
+              <li class="mode-feature-item">
+                <span class="mode-feature-check">-</span>
+                <span>Meet in the college library study rooms or campus lawn</span>
+              </li>
+              <li class="mode-feature-item">
+                <span class="mode-feature-check">-</span>
+                <span>Practical hardware/lab project assistance</span>
+              </li>
+              <li class="mode-feature-item">
+                <span class="mode-feature-check">-</span>
+                <span>Casual, friendly conversations over canteen breaks</span>
+              </li>
+            </ul>
+
+           
+    </section>
+
+   <!-- 8.FAQ-->
+       <!-- FAQs -->
+    <section class="faq-section" id="faqs">
+        <div class="faq-container">
+            <h2>FAQs</h2>
+
+            <details class="faq-item" name="faq">
+                <summary class="faq-question">
+                    What is SkillSwap?
+                    <span class="faq-icon"></span>
+                </summary>
+                <p class="faq-answer">SkillSwap is a student-to-student learning network for your campus. You list the skills you can teach and the ones you want to learn, and the platform helps you find classmates and seniors who can help.</p>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary class="faq-question">
+                    Is SkillSwap really free to use?
+                    <span class="faq-icon"></span>
+                </summary>
+                <p class="faq-answer">Yes. There are no fees and no payments between students. SkillSwap is built on mutual growth, so you never spend a single rupee.</p>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary class="faq-question">
+                    Do I have to teach something in order to learn?
+                    <span class="faq-icon"></span>
+                </summary>
+                <p class="faq-answer">No. There is no pressure of a direct one-to-one exchange. You can join just to learn, just to teach, or do both. Sharing what you know is encouraged, but not required.</p>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary class="faq-question">
+                    How do I get in touch with another student?
+                    <span class="faq-icon"></span>
+                </summary>
+                <p class="faq-answer">Search for a skill, open a student's profile and click the connect button. Once they accept your request, their contact details unlock and you can plan a study session in the library, in the hostel or online.</p>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary class="faq-question">
+                    Who can join the platform?
+                    <span class="faq-icon"></span>
+                </summary>
+                <p class="faq-answer">Any student on campus, from any academic year or branch. A first-year student can learn from a senior in a different department, and the other way around.</p>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary class="faq-question">
+                    Is my contact information safe?
+                    <span class="faq-icon"></span>
+                </summary>
+                <p class="faq-answer">Your contact details stay hidden until you accept a connection request, so only students you agree to connect with can see them.</p>
+            </details>
+
+        </div>
+    </section>
+
+
+    <!-- ======================================================================
+         9. FINAL CALL-TO-ACTION (CTA) BANNER
+         ====================================================================== -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <h2 class="cta-title">Ready to Learn and Share Skills?</h2>
+          <p class="cta-text">
+            Join fellow students on campus today. Register your skills, discover study partners, 
+            and elevate your college experience together.
+          </p>
+          <div class="cta-actions">
+            <a href="register.html" class="btn btn-primary btn-lg">Create Student Profile</a>
+            <a href="login.html" class="btn btn-outline btn-lg">Sign In with Existing Profile</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       10. SITE FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="brand-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+              </svg>
+            </div>
+            <span>Skill<span class="brand-highlight">Exchange</span></span>
+          </a>
+          <p>
+            A college student peer-to-peer learning and skill exchange network. 
+            Empowering students to teach what they know and master what they need.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#skills">Popular Skills</a></li>
+            <li><a href="#benefits">Why SkillExchange</a></li>
+            <li><a href="#learning-modes">Campus & Online</a></li>
+          </ul>
+        </div>
+
+        <!-- Account Links -->
+        <div class="footer-col">
+          <h5>Account</h5>
+          <ul class="footer-links">
+            <li><a href="register.html">Student Registration</a></li>
+            <li><a href="login.html">Student Login</a></li>
+          </ul>
+        </div>
+
+        <!-- Academic / Viva Prototype Badge -->
+        <div class="footer-col">
+         
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 SkillExchange Platform </p>
+        <p> • Designed And Build By Kartik Yadav & Aditya Bailkar</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript -->
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

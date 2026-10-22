@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – SkillExchange | Student Skill Exchange Platform</title>
+  <meta name="description" content="Manage your learning goals, view matching peers, and track connection requests.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. LOGGED-IN NAVIGATION HEADER
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo" aria-label="SkillExchange Dashboard">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+          </svg>
+        </div>
+        <span>Skill<span class="brand-highlight">Exchange</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+        <li><a href="students.html" class="nav-link">Find Students</a></li>
+        <li>
+          <a href="requests.html" class="nav-link">
+            Requests
+            <span id="navReqBadge" class="badge-year" style="display:none; background-color:#ef4444; color:#fff; border-color:#dc2626; margin-left:4px; font-size:0.7rem; padding:0.1rem 0.4rem; border-radius:999px;">0</span>
+          </a>
+        </li>
+        <li><a href="connections.html" class="nav-link">Connections</a></li>
+        <li><a href="profile.html" class="nav-link">My Profile</a></li>
+      </ul>
+
+      <!-- User Greeting & Logout -->
+      <div class="nav-actions">
+        <a href="profile.html" class="btn btn-outline btn-sm" title="View & Edit My Profile">
+          <span>My Profile</span>
+        </a>
+        <button id="logoutBtn" class="btn btn-outline-primary btn-sm">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       2. MAIN DASHBOARD CONTENT
+       ====================================================================== -->
+  <main class="container dashboard-layout">
+    <!-- Welcome Hero Banner -->
+    <section class="welcome-banner">
+      <div class="welcome-profile-info">
+        <div id="dashUserAvatar" class="welcome-avatar blue">
+          SE
+        </div>
+        <div class="welcome-text">
+          <h1 id="dashUserName">Welcome back!</h1>
+          <p id="dashUserMeta">Loading academic profile...</p>
+        </div>
+      </div>
+
+      <div class="welcome-meta-badges">
+        <span id="dashUserRatingBadge" class="rating-badge">★ 5.0 (0 reviews)</span>
+        <span id="dashUserModeBadge" class="badge-mode both">Mode: Both</span>
+      </div>
+    </section>
+
+    <!-- Quick Action Buttons Bar -->
+    <section class="quick-actions-bar">
+      <a href="students.html" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        <span>Find Students</span>
+      </a>
+      <a href="profile.html" class="btn btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+        </svg>
+        <span>Edit Profile</span>
+      </a>
+      <a href="requests.html" class="btn btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <span>View Requests</span>
+      </a>
+      <a href="connections.html" class="btn btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+        </svg>
+        <span>My Connections</span>
+      </a>
+    </section>
+
+    <!-- Metrics Stat Cards Grid -->
+    <section class="metrics-grid">
+      <!-- Metric 1: Teaching Skills -->
+      <div class="metric-card">
+        <div class="metric-icon-box blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <div id="metricTeachCount" class="metric-number">0</div>
+          <div class="metric-label">Skills I Can Teach</div>
+        </div>
+      </div>
+
+      <!-- Metric 2: Learning Skills -->
+      <div class="metric-card">
+        <div class="metric-icon-box purple">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </div>
+        <div>
+          <div id="metricLearnCount" class="metric-number">0</div>
+          <div class="metric-label">Skills I Want to Learn</div>
+        </div>
+      </div>
+
+      <!-- Metric 3: Active Connections -->
+      <div class="metric-card">
+        <div class="metric-icon-box green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div>
+          <div id="metricConnCount" class="metric-number">0</div>
+          <div class="metric-label">Active Connections</div>
+        </div>
+      </div>
+
+      <!-- Metric 4: Pending Requests -->
+      <div class="metric-card">
+        <div class="metric-icon-box amber">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <div id="metricReqCount" class="metric-number">0</div>
+          <div class="metric-label">Pending Requests</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-Column Main Content -->
+    <div class="dashboard-columns">
+      <!-- Left Column: Suggested Matches & Skills Overview -->
+      <div class="dashboard-main">
+        <!-- Suggested Students for You -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3>
+              <span>Suggested Student Matches for You</span>
+            </h3>
+            <a href="students.html" class="dash-card-header-link">Browse All Students →</a>
+          </div>
+
+          <!-- Matching explanation note for viva -->
+          <p style="font-size: 0.84rem; color: var(--slate-500); margin-bottom: 1.25rem;">
+            Matches students who teach the skills you want to learn. Mutual exchange opportunities are highlighted with a gold badge.
+          </p>
+
+          <div id="suggestedStudentsContainer" class="suggested-students-list">
+            <!-- Dynamically injected via dashboard.js -->
+          </div>
+        </div>
+
+        <!-- My Skills Overview -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3>
+              <span>My Registered Skills</span>
+            </h3>
+            <a href="profile.html" class="dash-card-header-link">+ Add / Edit Skills</a>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--primary);">Skills I Can Teach:</h4>
+              <div id="dashMyTeachSkills" style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+                <!-- Injected via dashboard.js -->
+              </div>
+            </div>
+
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--accent-purple);">Skills I Want to Learn:</h4>
+              <div id="dashMyLearnSkills" style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+                <!-- Injected via dashboard.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Recent Requests & Connections Sidebar -->
+      <div class="dashboard-sidebar">
+        <!-- Recent Requests Card -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3><span>Recent Requests</span></h3>
+            <a href="requests.html" class="dash-card-header-link">View All →</a>
+          </div>
+          <div id="dashRecentRequestsList" class="mini-activity-list">
+            <!-- Injected via dashboard.js -->
+          </div>
+        </div>
+
+        <!-- Connections Preview Card -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3><span>Active Connections</span></h3>
+            <a href="connections.html" class="dash-card-header-link">Manage →</a>
+          </div>
+          <div id="dashConnectionsList" class="mini-activity-list">
+            <!-- Injected via dashboard.js -->
+          </div>
+        </div>
+
+        <!-- Campus Learning Notice -->
+        <div class="campus-notice-box" style="margin-top: 0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+          <span>
+            <strong>Campus Learning Tip:</strong> When meeting offline, pick safe campus spots like the library study cabins, computer lab, or college canteen!
+          </span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

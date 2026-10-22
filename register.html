@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Profile – SkillExchange | Student Skill Exchange Platform</title>
+  <meta name="description" content="Create your student profile on SkillExchange to start sharing and learning skills with college peers.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+  <!-- Header Navigation -->
+  <header class="auth-nav">
+    <a href="index.html" class="brand-logo" aria-label="Return to SkillExchange Home">
+      <div class="brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+        </svg>
+      </div>
+      <span>Skill<span class="brand-highlight">Exchange</span></span>
+    </a>
+    <a href="login.html" class="btn btn-outline btn-sm">Already Registered? Log In</a>
+  </header>
+
+  <!-- Register Main Card -->
+  <main class="auth-card">
+    <div class="auth-header">
+      <h1>Create Student Profile</h1>
+      <p>Set up your skills profile to discover and exchange knowledge on campus</p>
+    </div>
+
+   
+
+    <!-- Error Alert Container -->
+    <div id="registerErrorAlert" class="alert alert-danger" role="alert"></div>
+
+    <!-- Registration Form -->
+     <br>
+    <form id="registerForm" novalidate>
+      <!-- Row 1: Name & Email -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="regFullName" class="form-label">Full Name <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="regFullName" 
+            class="form-control" 
+            placeholder="e.g. Aarav Sharma" 
+            required 
+            autocomplete="name"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail" class="form-label">College Email <span class="required">*</span></label>
+          <input 
+            type="email" 
+            id="regEmail" 
+            class="form-control" 
+            placeholder="e.g. aarav@college.edu" 
+            required 
+            autocomplete="email"
+          >
+        </div>
+      </div>
+
+      <!-- Row 2: Password -->
+      <div class="form-group">
+        <label for="regPassword" class="form-label">Password <span class="required">*</span></label>
+        <input 
+          type="password" 
+          id="regPassword" 
+          class="form-control" 
+          placeholder="At least 6 characters" 
+          required 
+          autocomplete="new-password"
+        >
+       
+      </div>
+
+      <!-- Row 3: Academic Year & Branch -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="regYear" class="form-label">Academic Year <span class="required">*</span></label>
+          <select id="regYear" class="form-control" required>
+            <option value="">-- Select Academic Year --</option>
+            <option value="FY">First Year (FY)</option>
+            <option value="SY">Second Year (SY)</option>
+            <option value="TY">Third Year (TY)</option>
+            <option value="TY">BTech</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="regBranch" class="form-label">Branch / Department <span class="required">*</span></label>
+          <select id="regBranch" class="form-control" required>
+            <option value="">-- Select Branch --</option>
+            <option value="Computer Engineering">Computer Engineering (CSE)</option>
+            <option value="Information Technology"> Artificial Intelligence and Machine Learning(AI&ML)</option>
+            <option value="AI & Data Science">AI & Data Science (AI & DS)</option>
+            <option value="Electronics & Telecomm">Electronics & Telecomm (E&TC)</option>
+            <option value="Mechanical Engineering">Computer Application (BCA)</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <!-- <option value="General Science & Humanities"></option> -->
+          </select>
+        </div>
+      </div>
+
+      
+      <!-- Preferred Learning Mode (Online, Offline, Both) -->
+      <div class="form-group">
+        <label class="form-label">Preferred Learning Mode <span class="required">*</span></label>
+        <div class="mode-tiles-grid">
+          <label class="mode-tile-label">
+            <input type="radio" name="regMode" value="Online">
+            <div class="mode-tile-card">
+              <span class="mode-tile-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="2" y1="20" x2="22" y2="20"></line>
+                </svg>
+              </span>
+              <span class="mode-tile-title">Online</span>
+            </div>
+          </label>
+
+          <label class="mode-tile-label">
+            <input type="radio" name="regMode" value="Offline">
+            <div class="mode-tile-card">
+              <span class="mode-tile-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"></path>
+                </svg>
+              </span>
+              <span class="mode-tile-title">Offline (Campus)</span>
+            </div>
+          </label>
+
+          <label class="mode-tile-label">
+            <input type="radio" name="regMode" value="Both" checked>
+            <div class="mode-tile-card">
+              <span class="mode-tile-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="12" r="5"></circle>
+                  <circle cx="15" cy="12" r="5"></circle>
+                </svg>
+              </span>
+              <span class="mode-tile-title">Both Modes</span>
+            </div>
+          </label>
+        </div>
+        <p class="form-hint">Offline interactions happen directly on campus (library/canteen) without tracking.</p>
+      </div>
+
+      <!-- Skills I Can Teach -->
+      <div class="form-group">
+        <label class="form-label">
+          Skills I Can Teach <span class="required">*</span>
+          <span style="font-weight: 400; color: var(--slate-500);">(Click to select or type below)</span>
+        </label>
+        <div class="skill-selector-box">
+          <div class="skill-chips-pool" id="teachTagsContainer">
+            <button type="button" class="skill-chip-btn" data-skill="Python">Python</button>
+            <button type="button" class="skill-chip-btn" data-skill="C++">C++</button>
+            <button type="button" class="skill-chip-btn" data-skill="Java">Java</button>
+            <button type="button" class="skill-chip-btn" data-skill="HTML">HTML</button>
+            <button type="button" class="skill-chip-btn" data-skill="CSS">CSS</button>
+            <button type="button" class="skill-chip-btn" data-skill="JavaScript">JavaScript</button>
+            <button type="button" class="skill-chip-btn" data-skill="Excel">Excel</button>
+            <button type="button" class="skill-chip-btn" data-skill="SQL">SQL</button>
+            <button type="button" class="skill-chip-btn" data-skill="Graphic Design">Graphic Design</button>
+            <button type="button" class="skill-chip-btn" data-skill="Video Editing">Video Editing</button>
+            <button type="button" class="skill-chip-btn" data-skill="Public Speaking">Public Speaking</button>
+            <button type="button" class="skill-chip-btn" data-skill="Git/GitHub">Git/GitHub</button>
+          </div>
+          <div class="chip-input-group">
+            <input 
+              type="text" 
+              id="customTeachInput" 
+              class="form-control" 
+              placeholder="Or type another skill you can teach..."
+            >
+            <button type="button" id="addTeachBtn" class="btn btn-outline-primary btn-sm">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills I Want to Learn -->
+      <div class="form-group">
+        <label class="form-label">
+          Skills I Want to Learn <span class="required">*</span>
+          <span style="font-weight: 400; color: var(--slate-500);">(Click to select or type below)</span>
+        </label>
+        <div class="skill-selector-box learn-selector">
+          <div class="skill-chips-pool" id="learnTagsContainer">
+            <button type="button" class="skill-chip-btn" data-skill="Python">Python</button>
+            <button type="button" class="skill-chip-btn" data-skill="C++">C++</button>
+            <button type="button" class="skill-chip-btn" data-skill="Java">Java</button>
+            <button type="button" class="skill-chip-btn" data-skill="HTML">HTML</button>
+            <button type="button" class="skill-chip-btn" data-skill="CSS">CSS</button>
+            <button type="button" class="skill-chip-btn" data-skill="JavaScript">JavaScript</button>
+            <button type="button" class="skill-chip-btn" data-skill="Excel">Excel</button>
+            <button type="button" class="skill-chip-btn" data-skill="SQL">SQL</button>
+            <button type="button" class="skill-chip-btn" data-skill="Graphic Design">Graphic Design</button>
+            <button type="button" class="skill-chip-btn" data-skill="Video Editing">Video Editing</button>
+            <button type="button" class="skill-chip-btn" data-skill="Public Speaking">Public Speaking</button>
+            <button type="button" class="skill-chip-btn" data-skill="Git/GitHub">Git/GitHub</button>
+          </div>
+          <div class="chip-input-group">
+            <input 
+              type="text" 
+              id="customLearnInput" 
+              class="form-control" 
+              placeholder="Or type another skill you want to learn..."
+            >
+            <button type="button" id="addLearnBtn" class="btn btn-outline-primary btn-sm">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Short Bio -->
+      <div class="form-group">
+        <label for="regBio" class="form-label">Short Bio</label>
+        <textarea 
+          id="regBio" 
+          class="form-control" 
+          placeholder="Briefly tell peers about yourself, your interests, or college projects..."
+        ></textarea>
+        <p class="form-hint">Visible to other students when browsing profiles.</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+        <span>Create My Profile & Continue</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 13H16.865L13.435 16.435L14.85 17.85L20.7 12L14.85 6.15L13.435 7.565L16.865 11H5V13Z"/>
+        </svg>
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <p>Already have an account? <a href="login.html">Sign in here</a></p>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

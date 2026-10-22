@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – SkillExchange | Student Skill Exchange Platform</title>
+  <meta name="description" content="Log in to your Student Skill Exchange account to discover peers and manage requests.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+  <!-- Header Navigation -->
+  <header class="auth-nav">
+    <a href="index.html" class="brand-logo" aria-label="Return to SkillExchange Home">
+      <div class="brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+        </svg>
+      </div>
+      <span>Skill<span class="brand-highlight">Exchange</span></span>
+    </a>
+    <a href="index.html" class="btn btn-outline btn-sm">← Back to Home</a>
+  </header>
+
+  <!-- Login Main Card -->
+  <main class="auth-card auth-card-sm">
+    <div class="auth-header">
+      <h1>Student Login</h1>
+      <p>Sign in to access your skills dashboard and peer requests</p>
+    </div>
+
+    <!-- Prototype Viva Notice -->
+    <div class="prototype-notice-strip">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+      </svg>
+      <span><strong>Viva Prototype:</strong> Login uses browser LocalStorage data.</span>
+    </div>
+
+    <!-- Demo Account Quick-Fill Dropdown (For Professor / Examiner Viva Demo) -->
+    <div class="demo-helper-box">
+      <div class="demo-helper-title">
+        <span>Quick Viva Demo: Select Sample Student</span>
+      </div>
+      <p class="demo-helper-text">Select an account below to auto-fill credentials instantly:</p>
+      <select id="demoAccountSelect" class="form-control demo-select-control">
+        <option value="">-- Choose a Demo Student Profile --</option>
+        <option value="rahul@college.edu">Rahul Patil (SY CSE • Teaches Python • Wants Excel)</option>
+        <option value="priya@college.edu">Priya Sharma (TY IT • Teaches Graphic Design • Wants Python)</option>
+        <option value="kunal@college.edu">Kunal Verma (FY Mech • Teaches Public Speaking • Wants C++)</option>
+        <option value="ananya@college.edu">Ananya Iyer (TY AI&DS • Teaches SQL • Wants Video Editing)</option>
+        <option value="aditya@college.edu">Aditya Nair (SY E&TC • Teaches C++ • Wants Excel)</option>
+        <option value="sneha@college.edu">Sneha Kulkarni (SY CSE • Teaches Web Dev • Wants C++)</option>
+      </select>
+    </div>
+
+    <!-- Error Alert Container -->
+    <div id="loginErrorAlert" class="alert alert-danger" role="alert"></div>
+
+    <!-- Login Form -->
+    <form id="loginForm" novalidate>
+      <div class="form-group">
+        <label for="loginEmail" class="form-label">
+          College Email Address <span class="required">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="loginEmail" 
+          class="form-control" 
+          placeholder="e.g. rahul@college.edu" 
+          required 
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword" class="form-label">
+          Password <span class="required">*</span>
+        </label>
+        <input 
+          type="password" 
+          id="loginPassword" 
+          class="form-control" 
+          placeholder="Enter password (default: password123)" 
+          required 
+          autocomplete="current-password"
+        >
+        <p class="form-hint">For all demo profiles, default password is <strong>password123</strong></p>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+        <span>Log In to Dashboard</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 13H16.865L13.435 16.435L14.85 17.85L20.7 12L14.85 6.15L13.435 7.565L16.865 11H5V13Z"/>
+        </svg>
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <p>New to SkillExchange? <a href="register.html">Create your student profile</a></p>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

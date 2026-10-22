@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Connections – SkillExchange | Student Skill Exchange Platform</title>
+  <meta name="description" content="View your active student learning connections and coordinate online or on-campus sessions.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. LOGGED-IN NAVIGATION HEADER
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo" aria-label="SkillExchange Dashboard">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+          </svg>
+        </div>
+        <span>Skill<span class="brand-highlight">Exchange</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="students.html" class="nav-link">Find Students</a></li>
+        <li><a href="requests.html" class="nav-link">Requests</a></li>
+        <li><a href="connections.html" class="nav-link active">Connections</a></li>
+        <li><a href="profile.html" class="nav-link">My Profile</a></li>
+      </ul>
+
+      <!-- User Actions -->
+      <div class="nav-actions">
+        <button id="logoutBtn" class="btn btn-outline-primary btn-sm">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       2. MAIN CONNECTIONS VIEW
+       ====================================================================== -->
+  <main class="container dashboard-layout">
+    <!-- Page Header -->
+    <div class="find-header-section">
+      <span class="section-badge">Connected Peers</span>
+      <h1 class="section-title" style="font-size: 2.1rem; margin-bottom: 0.35rem;">My Learning Connections</h1>
+      <p class="section-subtitle" style="font-size: 1rem;">
+        You have mutually connected with these students. Coordinate your study sessions and exchange practical skills.
+      </p>
+    </div>
+
+    <!-- Feedback Banner -->
+    <div id="connectionSuccessAlert" class="alert alert-success" role="alert"></div>
+
+    <!-- Results Meta -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <div id="connectionsCounter" style="font-weight: 700; color: var(--slate-800);">
+        Loading active connections...
+      </div>
+      <a href="students.html" class="btn btn-outline btn-sm">+ Connect with More Peers</a>
+    </div>
+
+    <!-- Connections Cards List -->
+    <section id="connectionsListContainer" style="display: flex; flex-direction: column; gap: 1.25rem;">
+      <!-- Populated via connections.js -->
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       3. MODAL: RATE & REVIEW CONNECTED STUDENT (PHASE 7)
+       ====================================================================== -->
+  <div id="reviewModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Rate & Review Peer</h3>
+          <p style="font-size: 0.85rem; color: var(--slate-500); margin-top: 2px;">
+            Share feedback on your learning interaction with this classmate.
+          </p>
+        </div>
+        <button type="button" id="closeReviewModalBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <!-- Peer Header Box -->
+      <div style="display: flex; align-items: center; gap: 0.85rem; background-color: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+        <div id="reviewTargetAvatar" class="avatar-circle-swatch blue" style="width: 44px; height: 44px; font-size: 1.1rem; flex-shrink: 0;">
+          SE
+        </div>
+        <div>
+          <h4 id="reviewTargetStudentName" style="font-size: 1rem; color: var(--slate-900);">Student Name</h4>
+          <p id="reviewTargetMeta" style="font-size: 0.8rem; color: var(--slate-500);">Branch • Academic Year</p>
+        </div>
+      </div>
+
+      <!-- Modal Error Alert -->
+      <div id="reviewModalAlert" class="alert alert-danger" style="display: none;"></div>
+
+      <form id="reviewForm">
+        <!-- Interactive Star Selector -->
+        <div class="form-group" style="text-align: center; margin-bottom: 1.5rem;">
+          <label class="form-label" style="display: block; margin-bottom: 0.5rem;">Select Rating (1 to 5 Stars) <span class="required">*</span></label>
+          <div id="starRatingPicker" class="star-rating-select-group" style="justify-content: center;">
+            <button type="button" class="star-input-btn filled" data-rating="1" title="1 Star">★</button>
+            <button type="button" class="star-input-btn filled" data-rating="2" title="2 Stars">★</button>
+            <button type="button" class="star-input-btn filled" data-rating="3" title="3 Stars">★</button>
+            <button type="button" class="star-input-btn filled" data-rating="4" title="4 Stars">★</button>
+            <button type="button" class="star-input-btn filled" data-rating="5" title="5 Stars">★</button>
+          </div>
+          <p class="form-hint">Click on stars to set rating (default 5 stars)</p>
+        </div>
+
+        <!-- Review Comment -->
+        <div class="form-group">
+          <label for="reviewComment" class="form-label">Review & Feedback <span class="required">*</span></label>
+          <textarea 
+            id="reviewComment" 
+            class="form-control" 
+            placeholder="e.g. Explained Python concepts very clearly in the college library! Very patient and friendly peer."
+            required
+            style="min-height: 95px;"
+          ></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" id="cancelReviewBtn" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <span>Submit Review</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/reviews.js"></script>
+  <script src="js/connections.js"></script>
+</body>
+</html>

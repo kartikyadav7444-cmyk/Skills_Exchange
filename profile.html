@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile – SkillExchange | Student Skill Exchange Platform</title>
+  <meta name="description" content="View and manage your student profile, skills to teach, skills to learn, and peer reviews.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. LOGGED-IN NAVIGATION HEADER
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo" aria-label="SkillExchange Dashboard">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17L5 13.18Z"/>
+          </svg>
+        </div>
+        <span>Skill<span class="brand-highlight">Exchange</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="students.html" class="nav-link">Find Students</a></li>
+        <li><a href="requests.html" class="nav-link">Requests</a></li>
+        <li><a href="connections.html" class="nav-link">Connections</a></li>
+        <li><a href="profile.html" class="nav-link active">My Profile</a></li>
+      </ul>
+
+      <!-- User Actions -->
+      <div class="nav-actions">
+        <button id="logoutBtn" class="btn btn-outline-primary btn-sm">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       2. MAIN PROFILE CONTAINER
+       ====================================================================== -->
+  <main class="container dashboard-layout">
+    <!-- Success Feedback Alert -->
+    <div id="profileSuccessAlert" class="alert alert-success" role="alert"></div>
+
+    <!-- ------------------------------------------------------------------
+         VIEW MODE: Complete Student Profile Card
+         ------------------------------------------------------------------ -->
+    <div id="profileViewContainer">
+      <!-- Profile Hero Card -->
+      <div class="profile-hero-card">
+        <div class="profile-cover-strip"></div>
+        <div class="profile-hero-body">
+          <div class="profile-hero-avatar-row">
+            <div id="profViewAvatar" class="profile-avatar-large blue">
+              SE
+            </div>
+            <div>
+              <button id="editProfileToggleBtn" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+                <span>Edit Profile</span>
+              </button>
+            </div>
+          </div>
+
+          <h1 id="profViewName" class="profile-name-title">Loading...</h1>
+          <p id="profViewMeta" class="profile-meta-text">Academic Details...</p>
+
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+            <span id="profViewRating" class="rating-badge">★ 5.0 (0 reviews)</span>
+            <span id="profViewMode" class="badge-mode both">Mode: Both</span>
+            <span style="font-size: 0.85rem; color: var(--slate-500); display: inline-flex; align-items: center; gap: 0.35rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span id="profViewEmail">-</span>
+            </span>
+          </div>
+
+          <div class="profile-bio-text" id="profViewBio">
+            Loading student bio...
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-Column Profile Details Grid -->
+      <div class="profile-content-grid">
+        <!-- Left: Skills Lists -->
+        <div class="profile-section-card">
+          <h3>
+            <span>Skills I Can Teach</span>
+          </h3>
+          <p style="font-size: 0.84rem; color: var(--slate-500); margin-bottom: 1rem;">
+            Peers can reach out to you for help on these subjects:
+          </p>
+          <div id="profViewTeachSkills" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem;">
+            <!-- Populated via profile.js -->
+          </div>
+
+          <h3 style="border-top: 1px solid var(--slate-200); padding-top: 1.25rem;">
+            <span>Skills I Want to Learn</span>
+          </h3>
+          <p style="font-size: 0.84rem; color: var(--slate-500); margin-bottom: 1rem;">
+            The platform matches you with student mentors for:
+          </p>
+          <div id="profViewLearnSkills" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <!-- Populated via profile.js -->
+          </div>
+        </div>
+
+        <!-- Right: Reviews Received from Other Students -->
+        <div class="profile-section-card">
+          <h3>
+            <span>Student Reviews & Peer Ratings</span>
+          </h3>
+          <p style="font-size: 0.84rem; color: var(--slate-500); margin-bottom: 1.25rem;">
+            Feedback submitted by fellow students after your learning sessions:
+          </p>
+
+          <div id="profileReviewsContainer" class="reviews-list-container">
+            <!-- Populated via profile.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------
+         EDIT MODE: Profile Edit Form (Hidden by default)
+         ------------------------------------------------------------------ -->
+    <div id="profileEditContainer" class="auth-card" style="display: none; max-width: 680px; margin: 0 auto;">
+      <div class="auth-header">
+        <h2>Edit Student Profile</h2>
+        <p>Update your academic info, skills, and learning preferences</p>
+      </div>
+
+      <form id="editProfileForm">
+        <!-- Name -->
+        <div class="form-group">
+          <label for="editFullName" class="form-label">Full Name <span class="required">*</span></label>
+          <input type="text" id="editFullName" class="form-control" required>
+        </div>
+
+        <!-- Year & Branch -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editYear" class="form-label">Academic Year <span class="required">*</span></label>
+            <select id="editYear" class="form-control" required>
+              <option value="FY">First Year (FY)</option>
+              <option value="SY">Second Year (SY)</option>
+              <option value="TY">Third Year (TY)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editBranch" class="form-label">Branch / Department <span class="required">*</span></label>
+            <input type="text" id="editBranch" class="form-control" required>
+          </div>
+        </div>
+
+        <!-- Avatar Color Theme -->
+        <div class="form-group">
+          <label class="form-label">Avatar Color Theme</label>
+          <div class="avatar-color-picker">
+            <label class="avatar-color-label" title="Royal Blue">
+              <input type="radio" name="editAvatar" value="blue">
+              <span class="avatar-circle-swatch blue"></span>
+            </label>
+            <label class="avatar-color-label" title="Purple">
+              <input type="radio" name="editAvatar" value="purple">
+              <span class="avatar-circle-swatch purple"></span>
+            </label>
+            <label class="avatar-color-label" title="Emerald Green">
+              <input type="radio" name="editAvatar" value="green">
+              <span class="avatar-circle-swatch green"></span>
+            </label>
+            <label class="avatar-color-label" title="Amber Orange">
+              <input type="radio" name="editAvatar" value="amber">
+              <span class="avatar-circle-swatch amber"></span>
+            </label>
+            <label class="avatar-color-label" title="Pink">
+              <input type="radio" name="editAvatar" value="pink">
+              <span class="avatar-circle-swatch pink"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Preferred Learning Mode -->
+        <div class="form-group">
+          <label class="form-label">Preferred Learning Mode <span class="required">*</span></label>
+          <div class="mode-tiles-grid">
+            <label class="mode-tile-label">
+              <input type="radio" name="editMode" value="Online">
+              <div class="mode-tile-card">
+                <span class="mode-tile-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="2" y1="20" x2="22" y2="20"></line>
+                  </svg>
+                </span>
+                <span class="mode-tile-title">Online</span>
+              </div>
+            </label>
+            <label class="mode-tile-label">
+              <input type="radio" name="editMode" value="Offline">
+              <div class="mode-tile-card">
+                <span class="mode-tile-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"></path>
+                  </svg>
+                </span>
+                <span class="mode-tile-title">Offline</span>
+              </div>
+            </label>
+            <label class="mode-tile-label">
+              <input type="radio" name="editMode" value="Both">
+              <div class="mode-tile-card">
+                <span class="mode-tile-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="12" r="5"></circle>
+                    <circle cx="15" cy="12" r="5"></circle>
+                  </svg>
+                </span>
+                <span class="mode-tile-title">Both</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Skills I Can Teach -->
+        <div class="form-group">
+          <label class="form-label">Skills I Can Teach (Click to remove)</label>
+          <div class="skill-selector-box">
+            <div id="editTeachSkillsList" style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:0.85rem;">
+              <!-- Removable chips injected via profile.js -->
+            </div>
+            <div style="font-size:0.78rem; font-weight:600; color:var(--slate-500); margin-bottom:0.4rem;">Quick add popular skills:</div>
+            <div id="quickTeachPool" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:0.85rem;">
+              <button type="button" class="skill-chip-btn" data-add-teach="Python">+ Python</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="C++">+ C++</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="Java">+ Java</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="HTML">+ HTML</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="CSS">+ CSS</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="JavaScript">+ JavaScript</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="Excel">+ Excel</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="SQL">+ SQL</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="Graphic Design">+ Graphic Design</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="Video Editing">+ Video Editing</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="Public Speaking">+ Public Speaking</button>
+              <button type="button" class="skill-chip-btn" data-add-teach="Git/GitHub">+ Git/GitHub</button>
+            </div>
+            <div class="chip-input-group">
+              <input type="text" id="customEditTeachInput" class="form-control" placeholder="Or type any custom skill you can teach...">
+              <button type="button" id="addEditTeachBtn" class="btn btn-outline-primary btn-sm">Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills I Want to Learn -->
+        <div class="form-group">
+          <label class="form-label">Skills I Want to Learn (Click to remove)</label>
+          <div class="skill-selector-box learn-selector">
+            <div id="editLearnSkillsList" style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:0.85rem;">
+              <!-- Removable chips injected via profile.js -->
+            </div>
+            <div style="font-size:0.78rem; font-weight:600; color:var(--slate-500); margin-bottom:0.4rem;">Quick add popular skills:</div>
+            <div id="quickLearnPool" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:0.85rem;">
+              <button type="button" class="skill-chip-btn" data-add-learn="Python">+ Python</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="C++">+ C++</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="Java">+ Java</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="HTML">+ HTML</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="CSS">+ CSS</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="JavaScript">+ JavaScript</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="Excel">+ Excel</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="SQL">+ SQL</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="Graphic Design">+ Graphic Design</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="Video Editing">+ Video Editing</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="Public Speaking">+ Public Speaking</button>
+              <button type="button" class="skill-chip-btn" data-add-learn="Git/GitHub">+ Git/GitHub</button>
+            </div>
+            <div class="chip-input-group">
+              <input type="text" id="customEditLearnInput" class="form-control" placeholder="Or type any custom skill you want to learn...">
+              <button type="button" id="addEditLearnBtn" class="btn btn-outline-primary btn-sm">Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="form-group">
+          <label for="editBio" class="form-label">Short Bio</label>
+          <textarea id="editBio" class="form-control" placeholder="Tell other students about your interests, projects, or learning goals..."></textarea>
+        </div>
+
+        <!-- Form Action Buttons -->
+        <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1.5rem;">
+          <button type="button" id="cancelEditBtn" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
